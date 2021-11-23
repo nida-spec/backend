@@ -11,21 +11,21 @@ const TransactionsSchema = new mongoose.Schema({
         required: [true, 'Please add a positive or negative number']
     },
     activity: {
-        type: String,
-        required: [true, 'Please add a positive or negative number']
+        type: String
+        // required: [true, 'Please add a positive or negative number']
     },
     duration: {
         type: Number,
         required: [true, 'Please add a positive or negative number']
     },
-    date: {
-        type: Number,
+     date: {
+        type: Date,
         required: [true, 'Please add a positive or negative number']
     },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    }
+    // createdAt: {
+    //     type: Date,
+    //     default: Date.now
+    // }
 })
 
-module.exports = mongoose.model('Transactions', TransactionsSchema)
+module.exports = mongoose.model('transactions', TransactionsSchema)

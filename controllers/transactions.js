@@ -21,13 +21,23 @@ exports.addTransactions = async (req, res, next) => {
     try {
         const { text, amount } = req.body;
 
-        const transaction = await Transaction.create(req.body);
+        console.log(req.body)
 
+        const activity = new Transaction({
+            name: req.body.name,
+            description: req.body.description,
+            activity: req.body.activityType,
+            duration: req.body.duration,
+        })
+
+        const transaction = await activity.save();
+        console.log(transaction);
         return res.status(201).json({
             success: true,
             data: transaction
         })
     } catch (error) {
+        console.log(error);
         if(error.name === 'ValidationError'){
             const messages = Object.values(error.errors).map(val => val.message)
 
